@@ -1,3 +1,4 @@
 [build]
-  command = "npm run generate"
-  publish = "dist"
+  base    = "public"
+  publish = "public"
+  command = "npm run-script build"
