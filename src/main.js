@@ -1,11 +1,9 @@
 import Vue from 'vue'
-import App from './App.vue'
+import './app/utils/server.js'
 
 import "./assets/styles/main.scss"
 
+// eslint-disable-next-line
+import components from "./app/components"
 
 Vue.config.productionTip = false
-
-new Vue({
-  render: h => h(App),
-}).$mount('#app')

@@ -62,12 +62,16 @@ header {
   display: flex;
   align-items: flex-end;
   background:#00000000;
-  transition:background 0.5s ease-in-out, backdrop-filter 0.5s ease-in-out, color 0.1s ease-in-out;
+  transition:background 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out, color 0.1s ease-in-out;
   backdrop-filter:blur(0px);
   &:hover {
     background:#00000099;
     backdrop-filter:blur(3px);
     color:$white;
+    ul li a span{
+      transition: 0.1s color ease-in-out;
+      color:$white;
+    }
   }
 }
 nav {

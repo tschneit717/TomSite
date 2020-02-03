@@ -27,6 +27,11 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+  hero {
+    display:block;
+  }
+</style>
 <style lang="scss" scoped>
   .hero {
     position:fixed;
@@ -34,6 +39,7 @@ export default {
   img {
     object-fit: cover;
     height: 100vh;
+    width:100%;
   }
   .absolute-cover {
     top:0;
