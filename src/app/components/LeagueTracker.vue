@@ -21,7 +21,7 @@ export default {
         'url': 'https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/'+playerName+'?api_key='+apiKey,
         headers: {'Access-Control-Allow-Origin': '*'}
       }
-      this.ajax(config).done(function (response) {
+      this.ajax(config,).done(function (response) {
         // eslint-disable-next-line no-console
         console.log(response);
       });
