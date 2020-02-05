@@ -7,14 +7,18 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "scss": "node-sass --watch scss -o css"
+    "scss": "node-sass --watch scss -o css",
+    "lambda:dev": "netlify-lambda serve src/lambda",
+    "lambda:build": "netlify-lambda build src/lambda"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "basscss": "^8.0.2",
     "chart.js": "^2.9.2",
     "core-js": "^3.3.2",
     "fontawesome": "^5.6.3",
     "jarallax": "^1.12.0",
+    "netlify-lambda": "^0.2.1",
     "typescript": "^3.7.4",
     "vue": "^2.6.10",
     "vue-chartjs": "^3.5.0",
@@ -31,6 +35,7 @@
     "html-loader": "^0.5.5",
     "lint-staged": "^9.4.2",
     "miragejs": "^0.1.33",
+    "netlify-lambda": "^0.2.1",
     "node-sass": "^4.13.0",
     "sass": "^1.19.0",
     "sass-loader": "^8.0.0",

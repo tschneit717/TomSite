@@ -13,16 +13,18 @@ export default {
   },
   methods: {
     async apiCall() {
-      const request = new XMLHttpRequest()
-  
-      request.open('GET', 'https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/Thorin087?api_key=RGAPI-77652b70-d6da-4a63-b573-f878f2006ef6', true),
-      
-      request.onload = function () {
-        var data = JSON.parse(this.response)
-        // eslint-disable-next-line no-console
-        console.log(data)
+      const playerName = 'Thorin087';
+      const apiKey = 'RGAPI-77652b70-d6da-4a63-b573-f878f2006ef6';
+      const config = {
+        "async": true,
+        "type": "GET",
+        'url': 'https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/'+playerName+'?api_key='+apiKey,
+        headers: {'Access-Control-Allow-Origin': '*'}
       }
-      request.send();
+      this.ajax(config).done(function (response) {
+        // eslint-disable-next-line no-console
+        console.log(response);
+      });
     }
   },
   mounted() {
