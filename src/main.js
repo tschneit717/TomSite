@@ -3,7 +3,6 @@ import './app/utils/server.js'
 
 import "./assets/styles/main.scss"
 
-// eslint-disable-next-line
-import components from "./app/components"
+import "./app/components"
 
 Vue.config.productionTip = false

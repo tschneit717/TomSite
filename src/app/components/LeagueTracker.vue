@@ -15,7 +15,8 @@ export default {
   mounted() {
     // console.log(RIOT_URL,GET_SUMMONER,document.querySelector('#summonerInputId'),API_KEY)
     // document.querySelector('#submitButton').addEventListener('click', () => {
-      fetch('/api/users').then((response) => {
+      // fetch('/api/users').then((response) => {
+      fetch('https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/Thorin087?api_key=RGAPI-77652b70-d6da-4a63-b573-f878f2006ef6').then((response) => {
         // eslint-disable-next-line no-console
         console.log(response)
         return response.json();
