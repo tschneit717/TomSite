@@ -9,3 +9,14 @@
   text-align: center;
   color: #2c3e50;
 }
+.content-block {
+  z-index: 4;
+  position: relative;
+  min-height: 50vh;
+  background: white;
+  display: flex;
+  padding: 0px 10% 120px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
