@@ -1,5 +1,6 @@
 <template>
   <header>
+    <button class="mobile-menu-toggle" aria-label="Click here to toggle the mobile menu">///</button>
     <div class="header-wrapper">
       <nav>
         <ul>
@@ -36,12 +37,26 @@
 </template>
 
 <script>
-export default {
-  name: 'HeaderWidget',
-  props: {
-    msg: String
+  export default {
+    name: 'HeaderWidget',
+    props: {
+      msg: String
+    },
+    methods: {
+      toggleNavWrap() {
+        const mobileNavToggle = document.querySelector('.mobile-menu-toggle');
+        const headerWrapper = document.querySelector('.header-wrapper');
+        if (mobileNavToggle) {
+          mobileNavToggle.addEventListener('click', () => {
+            headerWrapper.classList.toggle('active')
+          })
+        }
+      },
+    },
+    mounted() {
+      this.toggleNavWrap();
+    },
   }
-}
 </script>
 
 <style lang="scss" scoped>
