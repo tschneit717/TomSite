@@ -1,0 +1,15 @@
+$small-viewport: 480px;
+$medium-viewport: 768px;
+$large-viewport: 1024px;
+
+$breakpoints: (
+  small: $small-viewport,
+  medium: $medium-viewport,
+  large: $large-viewport,
+);
+
+:export {
+  small: $small-viewport;
+  medium: $medium-viewport;
+  large: $large-viewport;
+}

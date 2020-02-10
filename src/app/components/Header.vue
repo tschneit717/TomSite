@@ -129,4 +129,10 @@ nav {
     }
   }
 }
+  .mobile-menu-toggle {
+    display:none;
+    @include viewport(medium) {
+      display: block;
+    }
+  }
 </style>

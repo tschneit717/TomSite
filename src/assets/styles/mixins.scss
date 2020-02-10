@@ -1,0 +1,24 @@
+@mixin viewport($breakpoint, $device: false) {
+  // If the breakpoint exists in the map.
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Get the breakpoint value.
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+    // Write the media query.
+
+    $key: "max-width";
+    @if $device {
+      $key: "max-device-width";
+    }
+
+    $query: $key + ":" + $breakpoint-value;
+
+    @media ($query) {
+      @content;
+    }
+    // If the breakpoint doesn't exist in the map.
+  } @else {
+    @media ($breakpoint) {
+      @content;
+    }
+  }
+}
