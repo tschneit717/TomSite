@@ -1,7 +1,9 @@
 const path = require("path")
+const pages = require("./pages.json")
 
 module.exports = {
   filenameHashing: false,
+  pages,
   css: {
     loaderOptions: {
       scss: {

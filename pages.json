@@ -1,0 +1,12 @@
+{
+  "index": {
+    "title": "Tom's Website",
+    "template": "public/index.html",
+    "entry": "src/main.js"
+  },
+  "timeline": {
+    "title": "Timeline Canvas",
+    "template": "public/timeline.html",
+    "entry": "src/main.js"
+  }
+}
