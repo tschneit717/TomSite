@@ -15,9 +15,9 @@
                 <span>Interests</span>
               </a>
             </li>
-            <li class="/">
+            <li class="home">
               <!-- <img src=""> -->
-              <a href="#">
+              <a href="/">
                 <span>Home</span>
               </a>
             </li>
@@ -78,6 +78,7 @@ header {
   height:0;
   position: sticky;
   top:-20px;
+  z-index: 10;
 }
 .header {
   top:-20px;
