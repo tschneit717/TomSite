@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <header>
     <button class="mobile-menu-toggle" aria-label="Click here to toggle the mobile menu">///</button>
-    <header>
+    <div class="header">
       <div class="header-wrapper">
         <nav>
           <ul>
@@ -34,8 +34,8 @@
           </ul>
         </nav>
       </div>
-    </header>
-  </div>
+    </div>
+  </header>
 </template>
 
 <script>
@@ -47,7 +47,7 @@
     methods: {
       toggleNavWrap() {
         const mobileNavToggle = document.querySelector('.mobile-menu-toggle');
-        const headerWrapper = document.querySelector('header');
+        const headerWrapper = document.querySelector('.header');
         if (mobileNavToggle) {
           mobileNavToggle.addEventListener('click', () => {
             headerWrapper.classList.toggle('active')
@@ -75,10 +75,16 @@
   }
 }
 header {
+  height:0;
   position: sticky;
   top:-20px;
+}
+.header {
+  top:-20px;
+  position: sticky;
   z-index: 10;
   height:80px;
+  width:100%;
   padding-bottom:20px;
   margin-bottom:-100px;
   color:$black;
@@ -187,21 +193,21 @@ nav {
     }
   }
 }
-  .mobile-menu-toggle {
-    display:none;
-    position:fixed;
-    left:20px;
-    top:20px;
-    width:40px;
-    height:40px;
-    z-index: 11;
-    background:$navy;
-    color:$gold;
-    border:none;
-    font-size:22px;
-    font-weight: 800;
-    @include viewport(medium) {
-      display: block;
-    }
+.mobile-menu-toggle {
+  display:none;
+  position:fixed;
+  left:20px;
+  top:20px;
+  width:40px;
+  height:40px;
+  z-index: 11;
+  background:$navy;
+  color:$gold;
+  border:none;
+  font-size:22px;
+  font-weight: 800;
+  @include viewport(medium) {
+    display: block;
   }
+}
 </style>
