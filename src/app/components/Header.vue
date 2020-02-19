@@ -6,28 +6,28 @@
         <nav>
           <ul>
             <li>
-              <a href="#">
+              <a href="/work.html">
                 <span>Work</span>
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="/interests.html">
                 <span>Interests</span>
               </a>
             </li>
-            <li class="home">
+            <li class="/">
               <!-- <img src=""> -->
               <a href="#">
                 <span>Home</span>
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="/about.html">
                 <span>About</span>
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="/contact.html">
                 <span>Contact</span>
               </a>
             </li>

@@ -4,9 +4,24 @@
     "template": "public/index.html",
     "entry": "src/main.js"
   },
-  "timeline": {
+  "about": {
     "title": "Timeline Canvas",
-    "template": "public/timeline.html",
+    "template": "public/about.html",
+    "entry": "src/main.js"
+  },
+  "interests": {
+    "title": "My Interests",
+    "template": "public/interests.html",
+    "entry": "src/main.js"
+  },
+  "work": {
+    "title": "My Work",
+    "template": "public/work.html",
+    "entry": "src/main.js"
+  },
+  "contact": {
+    "title": "Contact Me",
+    "template": "public/contact.html",
     "entry": "src/main.js"
   }
 }
