@@ -1,0 +1,50 @@
+{
+  "1": {
+    "date": "July 7, 1994",
+    "event": "Initial Commit",
+    "media": ""
+  },
+  "2": {
+    "date": "2005",
+    "event": "First mods - Halo Combat Evolved",
+    "media": ""
+  },
+  "3": {
+    "date": "2008",
+    "event": "Company of Heroes Modding",
+    "media": ""
+  },
+  "4": {
+    "date": "August 2012",
+    "event": "Went to College",
+    "subtitle": "College of Fine Arts, Bowling Green State University",
+    "media": ""
+  },
+  "5": {
+    "date": "August 2013",
+    "event": "Changed Majors",
+    "subtitle": "Started web development in the College of Technology",
+    "media": ""
+  },
+  "6": {
+    "date": "September 2015",
+    "event": "Internship",
+    "subtitle": "Interned as a web developer for Bowling Green State University",
+    "media": ""
+  },
+  "7": {
+    "date": "May 2017",
+    "event": "Graduated from College",
+    "media": ""
+  },
+  "8": {
+    "date": "July 2017",
+    "event": "Started Work at Abercrombie & Fitch",
+    "media": ""
+  },
+  "9": {
+    "date": "September 2019",
+    "event": "Started Work at WillowTree",
+    "media": ""
+  }
+}
