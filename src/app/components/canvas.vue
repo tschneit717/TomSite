@@ -31,7 +31,7 @@
     },
     methods: {
       getPosition(itemYear, startYear, itemSize) {
-        if (isNaN(itemYear)) {
+        if (itemYear === "Today") {
           let today = new Date().getFullYear()
           return ((today - startYear) * itemSize);
         }
