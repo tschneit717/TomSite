@@ -30,12 +30,12 @@
       }
     },
     methods: {
-      getPosition(itemYear, startYear) {
+      getPosition(itemYear, startYear, itemSize) {
         if (isNaN(itemYear)) {
           let today = new Date().getFullYear()
-          return ((today - startYear) * 200);
+          return ((today - startYear) * itemSize);
         }
-        const timelinePosition = (Number(itemYear) - startYear) * 200
+        const timelinePosition = ((Number(itemYear) - startYear) * itemSize)
         return timelinePosition;
 
       },
@@ -44,13 +44,13 @@
         const startYear = Number(data.events[0].year)
         const timelineLength = currentYear - startYear;
         
-        const timelineItemSize = 7000 / timelineLength;
+        const timelineItemSize = 10000 / timelineLength;
 
         const timelineItem = document.querySelectorAll('.timeline-element')
 
         let count = 0;
         timelineItem.forEach(item => {
-          const itemPosition = this.getPosition(data.events[count].year, startYear)
+          const itemPosition = this.getPosition(data.events[count].year, startYear, timelineItemSize)
           // eslint-disable-next-line no-console
           console.log(data.events[count].year, itemPosition)
           item.style.left = itemPosition + 'px';
