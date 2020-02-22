@@ -6,20 +6,7 @@
     </ul>
   </div>
 </template>
-<script>
-  import events from './data/timelineData.json'
-
-	export default {
-  name: 'hello',
-  data () {
-    return {
-			items: events
-    }
-  }
-}
-
-</script>
-<!--<script>  
+<script>  
   import events from './data/timelineData.json'
 
   export default {
@@ -58,7 +45,7 @@
     } 
   }
   
-</script> -->
+</script>
 <style lang="scss" scoped>
   
 </style>
