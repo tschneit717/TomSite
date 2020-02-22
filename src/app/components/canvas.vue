@@ -43,8 +43,9 @@
         const currentYear = new Date().getFullYear();
         const startYear = Number(data.events[0].year)
         const timelineLength = currentYear - startYear;
+        const timelineScale = 10000;
         
-        const timelineItemSize = 10000 / timelineLength;
+        const timelineItemSize = timelineScale / timelineLength;
 
         const timelineItem = document.querySelectorAll('.timeline-element')
 
