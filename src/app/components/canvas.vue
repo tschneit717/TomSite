@@ -1,13 +1,15 @@
 <template>
-  <div>
-    <ul>
+  <div class="timeline-wrapper relative">
+    <ul class='timeline'>
       <!-- eslint-disable-next-line vue/require-v-for-key -->
-      <li v-for='item in events'>{{item.name}}</li>
+      <li class='timeline-element' v-for='item in items'>
+        {{item.name}}<br>{{item.date}}
+      </li>
     </ul>
   </div>
 </template>
 <script>  
-  import events from './data/timelineData.json'
+  const data = require('./data/timelineData.json')
 
   export default {
     name:'Timeline',
@@ -24,21 +26,39 @@
     },
     data () {
       return {
-        items: events
+        items: data.events
       }
     },
     methods: {
+      getPosition(itemYear, startYear) {
+        if (isNaN(itemYear)) {
+          let today = new Date().getFullYear()
+          return ((today - startYear) * 200);
+        }
+        const timelinePosition = (Number(itemYear) - startYear) * 200
+        return timelinePosition;
+
+      },
       init(){
-        fetch('./data/timelineData.json')
-          .then(r => r.json())
-          .then(json => {
-            this.levels=json;
-          },
-          response => {
+        const currentYear = new Date().getFullYear();
+        const startYear = Number(data.events[0].year)
+        const timelineLength = currentYear - startYear;
+        
+        const timelineItemSize = 7000 / timelineLength;
+
+        const timelineItem = document.querySelectorAll('.timeline-element')
+
+        let count = 0;
+        timelineItem.forEach(item => {
+          const itemPosition = this.getPosition(data.events[count].year, startYear)
           // eslint-disable-next-line no-console
-          console.log(response)
-        });
-      }
+          console.log(data.events[count].year, itemPosition)
+          item.style.left = itemPosition + 'px';
+          item.style.width = timelineItemSize + 'px';
+          count++ 
+        })
+
+      },
     },
     mounted() {
       this.init();
@@ -47,5 +67,20 @@
   
 </script>
 <style lang="scss" scoped>
-  
+  .timeline-wrapper {
+    max-width: 100vw;
+    height:100vh;
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  ul {
+    display: flex;
+    width:1000%;
+    li {
+      position: absolute;
+      list-style: none;
+    }
+  }
 </style>
