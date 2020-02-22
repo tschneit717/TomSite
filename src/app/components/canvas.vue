@@ -78,7 +78,7 @@
   }
   ul {
     display: flex;
-    width:1000%;
+    width:100%;
     li {
       position: absolute;
       list-style: none;
