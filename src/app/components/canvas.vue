@@ -3,12 +3,14 @@
     <ul class='timeline'>
       <!-- eslint-disable-next-line vue/require-v-for-key -->
       <li class='timeline-element' v-for='item in items'>
-        {{item.name}}<br>{{item.date}}
+        <p class="timeline-element__name">{{item.name}}</p>
+        <p class="timeline-element__date">{{item.date}}</p>
       </li>
     </ul>
   </div>
 </template>
 <script>  
+/* eslint-disable no-console */
   const data = require('./data/timelineData.json')
 
   export default {
@@ -41,7 +43,7 @@
       },
       init(){
         const currentYear = new Date().getFullYear();
-        const startYear = Number(data.events[0].year)
+        const startYear = Number(this.items[0].year)
         const timelineLength = currentYear - startYear;
         const timelineScale = 10000;
         
@@ -51,12 +53,19 @@
 
         let count = 0;
         timelineItem.forEach(item => {
-          const itemPosition = this.getPosition(data.events[count].year, startYear, timelineItemSize)
-          // eslint-disable-next-line no-console
-          console.log(data.events[count].year, itemPosition)
-          item.style.left = itemPosition + 'px';
+          const itemPosition = this.getPosition(this.items[count].year, startYear, timelineItemSize)
+          let currCount = this.items[count].year;
+          if (count > 0) {
+            let prevCount = this.items[count-1].year
+             if (currCount == prevCount) {
+              item.style.left = itemPosition + timelineItemSize + 'px';
+            }
+            else {
+              item.style.left = itemPosition + 'px';
+            }
+          }
           item.style.width = timelineItemSize + 'px';
-          count++ 
+          count++  
         })
 
       },
@@ -68,13 +77,25 @@
   
 </script>
 <style lang="scss" scoped>
-  .timeline-wrapper {
-    max-width: 100vw;
-    height:100vh;
-    overflow: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .timeline{
+    &-wrapper {
+      max-width: 100vw;
+      height:100vh;
+      overflow: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    &-element {
+      display: block;
+      &__name {
+        font-size:1.5rem;
+      }
+      &__date {
+        font-size:2rem;
+        font-weight: 800;
+      }
+    }
   }
   ul {
     display: flex;
