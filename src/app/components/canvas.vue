@@ -51,10 +51,9 @@
         const startYear = Number(this.items[0].year)
         const timelineLength = currentYear - startYear;
         const timelineScale = (window.innerWidth * 5);
-        
-        console.log(this.items.length)
         const timelineItemSize = timelineScale / timelineLength;
 
+        const timelineWrapper = document.querySelector('.timeline-wrapper')
         const timelineItem = document.querySelectorAll('.timeline-element')
 
         let count = 0;
@@ -70,18 +69,20 @@
               if (dupYearCount > 0) {
                 item.style.left = `${itemPosition + (dupYearCount * timelineItemSize)}px`;
               } else {
-                item.style.left = itemPosition + timelineItemSize + 'px';
+                item.style.left = `${itemPosition + timelineItemSize}px`;
               }
             }
             else {
-              if (dupYearCount > 0) {
+              if (dupYearCount == 0) {
                 item.style.left = `${itemPosition + (dupYearCount * timelineItemSize)}px`;
               } else {
-                item.style.left = itemPosition + 'px';
+                item.style.left = `${itemPosition}px`;
               }
             }
+          } else if (count == 0) {
+            item.style.left = `${((timelineWrapper.clientWidth - timelineItemSize) / 2)}px`
           }
-          item.style.width = timelineItemSize + 'px';
+          item.style.width = `${timelineItemSize}px`;
           count++  
         })
 
@@ -102,6 +103,20 @@
       display: flex;
       align-items: center;
       justify-content: baseline;
+      &:after {
+        background: -moz-linear-gradient(left,  rgba(255,255,255,1) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.98) 99%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 50%,rgba(255,255,255,0.98) 99%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to right,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 50%,rgba(255,255,255,0.98) 99%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+        content:'';
+        position: fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        z-index:10;
+        pointer-events: none;
+      }
     }
     &-element {
       display: block;
