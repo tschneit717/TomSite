@@ -24,14 +24,14 @@ export default {
     subtitle: String,
     src: String,
     alt: String
+  },
+  computed: {
+    cssProps() {
+      return {'--background-image': (this.src)}
+    }
   }
 }
 </script>
-<style lang="scss">
-  hero {
-    display:block;
-  }
-</style>
 <style lang="scss" scoped>
   .hero {
     position:fixed;
@@ -46,11 +46,13 @@ export default {
     left:0;
     width:100%;
     height:100%;
-    backdrop-filter: sepia(90%) brightness(90%) contrast(110%);
     position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-image: linear-gradient(to right, $red, $gold), url('./../../../public/assets/images/glacier-np.png');
+    background-size:cover;
+    background-blend-mode: color;
   }
   .copybox {
     bottom:20%;
