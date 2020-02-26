@@ -117,22 +117,24 @@ header {
       }
     }
   }
-  &:hover {
-    background:#00000099;
-    backdrop-filter:blur(3px);
-    color:$white;
-    ul li a span{
-      transition: 0.1s color ease-in-out;
+  @media only screen and (min-width:768px){
+    &:hover {
+      background:#00000099;
+      backdrop-filter:blur(3px);
       color:$white;
-    }
-    @include viewport (medium) {
-      background:$dark-gray;
-      backdrop-filter:blur(0px);
-      color:$black;
       ul li a span{
-        transition: 0s color ease-in-out;
-        color:$black;
+        transition: 0.1s color ease-in-out;
+        color:$white;
       }
+    }
+  }
+  @include viewport (medium) {
+    background:inherit;
+    backdrop-filter:blur(0px);
+    color:$black;
+    ul li a span{
+      transition: 0s color ease-in-out;
+      color:$black;
     }
   }
 }
