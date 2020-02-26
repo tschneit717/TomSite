@@ -1,0 +1,54 @@
+{
+  "events":[
+    {
+      "date": "July 7, 1994",
+      "year": "1994",
+      "name": "Tom's Initial Commit"
+    },
+    {
+      "date": "Summer of 2006",
+      "year": "2006",
+      "name": "Tom discovered modding in 'Halo'"
+    },
+    {
+      "date": "Summer of 2010",
+      "year": "2010",
+      "name": "Tom started modding 'Company of Heroes'"
+    },
+    {
+      "date": "August 2012",
+      "year": "2012",
+      "name": "Tom goes to Bowling Green State University for Fine Arts"
+    },
+    {
+      "date": "August 2013",
+      "year": "2013",
+      "name": "Tom changes majors to 'Visual Communication Technology"
+    },
+    {
+      "date": "September 2015",
+      "year": "2015",
+      "name": "Internship at Bowling Green State University as a web developer"
+    },
+    {
+      "date": "May 2017",
+      "year": "2017",
+      "name": "Graduated from Bowling Green State University"
+    },
+    {
+      "date": "July 2017",
+      "year": "2017",
+      "name": "Started work at Abercrombie & Fitch"
+    },
+    {
+      "date": "September 2019",
+      "year": "2019",
+      "name": "Started work at WillowTree"
+    },
+    {
+      "date": "Today",
+      "year": "Today",
+      "name": "Doing some cool shit"
+    }
+  ]
+}
