@@ -39,6 +39,7 @@ export default {
   img {
     object-fit: cover;
     height: 100vh;
+    min-height:800px;
     width:100%;
   }
   .absolute-cover {
@@ -60,6 +61,7 @@ export default {
   }
   .hero-wrapper {
     height:100vh;
+    min-height:800px;
     position: relative;
   }
 </style>

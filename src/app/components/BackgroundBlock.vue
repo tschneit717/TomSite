@@ -15,6 +15,7 @@
     position: relative;
     width:100%;
     height:100vh;
-    background-attachment: fixed
+    background-attachment: fixed;
+    background-size: cover;  
   }
 </style>
