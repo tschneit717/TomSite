@@ -63,7 +63,6 @@
           let currCount = this.items[count].year;
           if (count > 0) {
             let prevCount = this.items[count-1].year
-            console.log(currCount, prevCount)
              if (currCount === prevCount) {
                dupYearCount++;
               if (dupYearCount > 0) {
@@ -87,9 +86,43 @@
         })
 
       },
+      scrollPosition(scrollPos, scrollElement) {
+        let isRight;
+        if (scrollElement.scrollLeft > scrollPos)
+          isRight = true
+        else
+          isRight = false;
+        return isRight;
+      },
+      scrollListen() {
+        const timelineWrapper = document.querySelector('.timeline-wrapper')
+        const timelineItems = document.querySelectorAll('.timeline-element')
+        var ref = this;
+          // Initial state
+        var scrollPos = 0;
+        timelineWrapper.addEventListener('scroll', event => {
+          if (ref.scrollPosition(scrollPos, event.target)) {
+            timelineItems.forEach( item => {
+              item.style.transform = 'rotateY(65deg)'
+            })
+          }
+          else if (!ref.scrollPosition(scrollPos, event.target)) {
+            timelineItems.forEach( item => {
+              item.style.transform = 'rotateY(-65deg)'
+            })
+          }
+          scrollPos = event.target.scrollLeft;
+          setTimeout(() => {
+            timelineItems.forEach( item => {
+              item.style.transform = 'rotateY(0)'
+            })
+          }, 400)
+        });
+      },
     },
     mounted() {
       this.init();
+      this.scrollListen();
     } 
   }
   
@@ -103,6 +136,7 @@
       display: flex;
       align-items: center;
       justify-content: baseline;
+     
       &:after {
         background: -moz-linear-gradient(left,  rgba(255,255,255,1) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.98) 99%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
         background: -webkit-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 50%,rgba(255,255,255,0.98) 99%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
@@ -117,9 +151,13 @@
         z-index:1;
         pointer-events: none;
       }
+      &.tilt-right .timeline-element {
+        transform:rotateY(45deg)
+      }
     }
     &-element {
       display: block;
+      transition:.4s;
       &__name {
         font-size:1.5rem;
       }
