@@ -52,9 +52,10 @@
         const timelineLength = currentYear - startYear;
         const timelineScale = (window.innerWidth * 5);
         const timelineItemSize = timelineScale / timelineLength;
-
+        const timelineList = document.querySelector('.timeline')
         const timelineWrapper = document.querySelector('.timeline-wrapper')
         const timelineItem = document.querySelectorAll('.timeline-element')
+        timelineList.style.width = timelineScale * (timelineLength + 1);
 
         let count = 0;
         let dupYearCount = 0;
@@ -99,24 +100,44 @@
         const timelineItems = document.querySelectorAll('.timeline-element')
         var ref = this;
           // Initial state
-        var scrollPos = 0;
+        let scrollPos = 0;
         timelineWrapper.addEventListener('scroll', event => {
           if (ref.scrollPosition(scrollPos, event.target)) {
             timelineItems.forEach( item => {
-              item.style.transform = 'rotateY(65deg)'
+              item.classList.add('tilt-right')
+              if (item.classList.contains('tilt-left')){
+                item.classList.remove('tilt-left')
+              }
             })
           }
           else if (!ref.scrollPosition(scrollPos, event.target)) {
             timelineItems.forEach( item => {
-              item.style.transform = 'rotateY(-65deg)'
+              item.classList.add('tilt-left')
+              if (item.classList.contains('tilt-right')){
+                item.classList.remove('tilt-right')
+              }
             })
           }
+          var scrollStop = function (callback) {
+            if (!callback || typeof callback !== 'function') return;
+            var isScrolling;
+            timelineWrapper.addEventListener('scroll', ()  => {
+              window.clearTimeout(isScrolling);
+              isScrolling = setTimeout(() => {
+                callback();
+              }, 66);
+            }, false);
+          };
           scrollPos = event.target.scrollLeft;
-          setTimeout(() => {
+          scrollStop(function () {
             timelineItems.forEach( item => {
-              item.style.transform = 'rotateY(0)'
+              if (item.classList.contains('tilt-left')){
+                item.classList.remove('tilt-left')
+              } else if (item.classList.contains('tilt-right')) {
+                item.classList.remove('tilt-right')
+              }
             })
-          }, 400)
+          });
         });
       },
     },
@@ -151,19 +172,28 @@
         z-index:1;
         pointer-events: none;
       }
-      &.tilt-right .timeline-element {
-        transform:rotateY(45deg)
-      }
     }
     &-element {
       display: block;
-      transition:.4s;
       &__name {
         font-size:1.5rem;
       }
       &__date {
         font-size:2rem;
         font-weight: 800;
+      }
+      &.tilt- {
+        &left p {
+          transform: rotateY(-65deg);
+          transition:.4s;
+        }
+        &right p {
+          transition:.4s;
+          transform: rotateY(-65deg);
+        }
+      }
+      p {
+          transition:.4s;
       }
     }
   }
@@ -172,6 +202,9 @@
     li {
       position: relative;
       list-style: none;
+      &:last-of-type {
+        padding-right:40vw;
+      }
     }
   }
 </style>
