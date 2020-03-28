@@ -1,4 +1,5 @@
 <template>
+<div class="outer-div">
   <div class="timeline-wrapper relative">
     <ul class='timeline'>
       <!-- eslint-disable-next-line vue/require-v-for-key -->
@@ -8,6 +9,10 @@
       </li>
     </ul>
   </div>
+  <div class="scrollbar-wrapper">
+    <div class="scrollbar"></div>
+  </div>
+</div>
 </template>
 <script>  
 /* eslint-disable no-console */
@@ -98,10 +103,13 @@
       scrollListen() {
         const timelineWrapper = document.querySelector('.timeline-wrapper')
         const timelineItems = document.querySelectorAll('.timeline-element')
+        const outerDiv = document.querySelector('.outer-div')
         var ref = this;
           // Initial state
         let scrollPos = 0;
         timelineWrapper.addEventListener('scroll', event => {
+          timelineWrapper.classList.add('scrolling')
+          outerDiv.classList.add('scrolling')
           if (ref.scrollPosition(scrollPos, event.target)) {
             timelineItems.forEach( item => {
               item.classList.add('tilt-right')
@@ -125,11 +133,13 @@
               window.clearTimeout(isScrolling);
               isScrolling = setTimeout(() => {
                 callback();
-              }, 66);
+              }, 150);
             }, false);
           };
           scrollPos = event.target.scrollLeft;
           scrollStop(function () {
+            timelineWrapper.classList.remove('scrolling')
+            outerDiv.classList.remove('scrolling')
             timelineItems.forEach( item => {
               if (item.classList.contains('tilt-left')){
                 item.classList.remove('tilt-left')
@@ -149,6 +159,31 @@
   
 </script>
 <style lang="scss" scoped>
+.outer-div {
+  &:after {
+    background: -moz-linear-gradient(left,  rgba(255,255,255,1) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.98) 99%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 50%,rgba(255,255,255,0.98) 99%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 50%,rgba(255,255,255,0.98) 99%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+    content:'';
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:1;
+    pointer-events: none;
+    transition:  all 0.4s;
+  }
+    &.scrolling {
+      &:after {
+        transition: all 0.4s;
+        background: -moz-linear-gradient(left,  rgba(255,255,255,1) 12%, rgba(255,255,255,0) 50%,  rgba(255,255,255,1)88%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(left,  rgba(255,255,255,1) 12%,rgba(255,255,255,0) 50%,rgba(255,255,255,1) 88%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to right,  rgba(255,255,255,1) 12%,rgba(255,255,255,0),rgba(255,255,255,1) 88%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      }
+    }
+  }
   .timeline{
     &-wrapper {
       height:100vh;
@@ -157,20 +192,10 @@
       display: flex;
       align-items: center;
       justify-content: baseline;
-     
-      &:after {
-        background: -moz-linear-gradient(left,  rgba(255,255,255,1) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.98) 99%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
-        background: -webkit-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 50%,rgba(255,255,255,0.98) 99%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
-        background: linear-gradient(to right,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 50%,rgba(255,255,255,0.98) 99%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
-        content:'';
-        position: fixed;
-        top:0;
-        left:0;
-        width:100%;
-        height:100%;
-        z-index:1;
-        pointer-events: none;
+      transition: 0.4s;
+     &.scrolling{
+        transform:scale(0.75);
+        transition: 0.4s;
       }
     }
     &-element {
