@@ -1,18 +1,20 @@
 <template>
-<div class="outer-div">
-  <div class="timeline-wrapper relative">
-    <ul class='timeline'>
-      <!-- eslint-disable-next-line vue/require-v-for-key -->
-      <li class='timeline-element' v-for='item in items'>
-        <p class="timeline-element__name">{{item.name}}</p>
-        <p class="timeline-element__date">{{item.date}}</p>
-      </li>
-    </ul>
+  <div class="outer-div">
+    <div class="timeline-wrapper relative">
+      <ul class='timeline'>
+        <!-- eslint-disable-next-line vue/require-v-for-key -->
+        <li class='timeline-element' v-for='item in items'>
+          <p class="timeline-element__name">{{item.name}}</p>
+          <p class="timeline-element__date">{{item.date}}</p>
+        </li>
+      </ul>
+    </div>
+    <div class="scrollbar-container">
+      <div class="scrollbar-wrapper">
+        <button class="scrollbar"></button>
+      </div>
+    </div>
   </div>
-  <div class="scrollbar-wrapper">
-    <div class="scrollbar"></div>
-  </div>
-</div>
 </template>
 <script>  
 /* eslint-disable no-console */
@@ -33,7 +35,8 @@
     },
     data () {
       return {
-        items: data.events
+        items: data.events,
+        isScrolling: false
       }
     },
     methods: {
@@ -150,9 +153,94 @@
           });
         });
       },
+      initScrollbar() {
+        const ref = this;
+        const scrollButton = document.querySelector('button.scrollbar');
+        const scrollWrapper = document.querySelector('.scrollbar-wrapper');
+        const timelineWrapper = document.querySelector('.timeline-wrapper');
+        // const timelineItems = document.querySelectorAll('.timeline-element')
+        // const outerDiv = document.querySelector('.outer-div')
+
+        let active = false;
+        var currentX, initialX;
+        var xOffset = 0;
+
+        function scrollStart(e) {
+          if (e === 'touchstart') {
+            initialX = e.touches[0].clientX - xOffset;
+          } else {
+            initialX = e.clientX - xOffset;
+          }
+          if (e.target === scrollButton) {
+            active = true;
+          }
+        }
+        function scrollEnd() {
+          initialX = 0;
+          xOffset = 0;
+          currentX = 0;
+
+          active = false;
+          setTranslate(0, scrollButton);
+        }
+        function scroll(e) {
+          if (active) {
+          
+            e.preventDefault();
+            if (e.type === "touchmove") {
+              currentX = e.touches[0].clientX - initialX;
+            } else {
+              currentX = e.clientX - initialX;
+            }
+            xOffset = currentX;
+            if (xOffset >= 100 ) {
+              xOffset = 100;
+              currentX = 100;
+            } else if (xOffset <= -100) {
+              xOffset = -100;
+              currentX = -100;
+            }
+            setTranslate(currentX, scrollButton);
+          }
+        }
+        function checkScrolling() {
+          let scrollStop;
+          if(active) {
+            scrollStop = function (callback) {
+              if (!callback || typeof callback !== 'function') return;
+              ref.isScrolling = setInterval(() => {
+                callback();
+              }, 10);
+            };
+            scrollStop(function() {
+              timelineWrapper.scroll(timelineWrapper.scrollLeft + xOffset / 2,0, 'smooth') 
+            })
+          } else {
+            window.clearInterval(ref.isScrolling);
+            scrollStop = null;
+          }
+        }
+        
+        function setTranslate(xPos,el) {
+          if (xPos === 0) {
+            el.style.transition = 'all 0.4s;'
+          } else {
+            el.style.transition = 'all 0s;'
+          }
+          el.style.transform = "translateX(" + xPos + "px)";
+        }
+        scrollWrapper.addEventListener("mousedown", scrollStart, false);
+        scrollWrapper.addEventListener("mouseup", scrollEnd, false);
+        scrollWrapper.addEventListener("mousemove", scroll, false);     
+        scrollWrapper.addEventListener("mousedown", checkScrolling, false);
+        scrollWrapper.addEventListener("mouseup", () => {
+          window.clearInterval(this.isScrolling)
+        }, false);
+      }
     },
     mounted() {
       this.init();
+      this.initScrollbar();
       this.scrollListen();
     } 
   }
@@ -193,7 +281,12 @@
       align-items: center;
       justify-content: baseline;
       transition: 0.4s;
-     &.scrolling{
+      -ms-overflow-style: none;  /* Internet Explorer 10+ */
+      scrollbar-width: none;  /* Firefox */
+      &::-webkit-scrollbar { 
+          display: none;  /* Safari and Chrome */
+      }
+      &.scrolling{
         transform:scale(0.75);
         transition: 0.4s;
       }
@@ -230,6 +323,34 @@
       &:last-of-type {
         padding-right:40vw;
       }
+    }
+  }
+  .scrollbar {
+    display: block;
+    border-radius: 50%;
+    height:100px;
+    width:100px;
+    background:red;
+    position: absolute;
+    margin:0 auto;
+    border:none;
+    &:hover {
+      cursor:pointer;
+    }
+    &-wrapper {
+      width:100%;
+      height:100px;
+      margin:0px auto;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    &-container {
+      margin:-130px auto;
+      overflow: hidden;
+      width:100%;
+      height:100px;
     }
   }
 </style>
