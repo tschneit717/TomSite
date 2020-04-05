@@ -4,10 +4,8 @@
       <ul class='timeline'>
         <!-- eslint-disable-next-line vue/require-v-for-key -->
         <li class='timeline-element' v-for='item in items'>
-          <div class="timeline-element__card">
-            <p class="timeline-element__name">{{item.name}}</p>
-            <p class="timeline-element__date">{{item.date}}</p>
-          </div>
+          <p class="timeline-element__name">{{item.name}}</p>
+          <p class="timeline-element__date">{{item.date}}</p>
         </li>
       </ul>
     </div>
@@ -251,9 +249,9 @@
 <style lang="scss" scoped>
 .outer-div {
   &:after {
-    background: -moz-linear-gradient(left,  rgba(244, 244, 239,1) 0%, rgba(244, 244, 239,0) 50%, rgba(244, 244, 239,1) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(left,  rgba(244, 244, 239,1) 0%,rgba(244, 244, 239,0) 50%, rgba(244, 244, 239,1) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to right,  rgba(244, 244, 239,1) 0%,rgba(244, 244, 239,0) 50%, rgba(244, 244, 239,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    background: -moz-linear-gradient(left,  rgba(255,255,255,1) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.98) 99%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 50%,rgba(255,255,255,0.98) 99%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 50%,rgba(255,255,255,0.98) 99%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
     content:'';
     position: fixed;
@@ -268,7 +266,9 @@
     &.scrolling {
       &:after {
         transition: all 0.4s;
-        transform: scale(0.75);
+        background: -moz-linear-gradient(left,  rgba(255,255,255,1) 12%, rgba(255,255,255,0) 50%,  rgba(255,255,255,1)88%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(left,  rgba(255,255,255,1) 12%,rgba(255,255,255,0) 50%,rgba(255,255,255,1) 88%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to right,  rgba(255,255,255,1) 12%,rgba(255,255,255,0),rgba(255,255,255,1) 88%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
       }
     }
   }
@@ -293,7 +293,6 @@
     }
     &-element {
       display: block;
-      perspective: 1000px;
       &__name {
         font-size:1.5rem;
       }
@@ -301,30 +300,18 @@
         font-size:2rem;
         font-weight: 800;
       }
-      &__card {
-        border-radius: 10px;
-        min-height:200px;
-        height:40vh;
-        background:$dark;
-        display:flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        padding:10px;
-        transition:.4s;
-        p {
-          color:$light;
-        }
-      }
       &.tilt- {
-        &left .timeline-element__card {
+        &left p {
           transform: rotateY(-65deg);
           transition:.4s;
         }
-        &right .timeline-element__card {
+        &right p {
           transition:.4s;
-          transform: rotateY(65deg);
+          transform: rotateY(-65deg);
         }
+      }
+      p {
+          transition:.4s;
       }
     }
   }
@@ -333,11 +320,8 @@
     li {
       position: relative;
       list-style: none;
-      &:last-of-type::after {
-        position: relative;
-        width:40vw;
-        content:'';
-        display:block;
+      &:last-of-type {
+        padding-right:40vw;
       }
     }
   }
@@ -346,7 +330,7 @@
     border-radius: 50%;
     height:100px;
     width:100px;
-    background:$blue;
+    background:#00eeff;
     position: absolute;
     margin:0 auto;
     border:none;
