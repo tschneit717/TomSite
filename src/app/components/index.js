@@ -7,7 +7,7 @@ import HeaderWidget from './Header.vue'
 import Hero from './Hero.vue'
 import FunkyBlock from './FunkyBlock.vue'
 import BackgroundBlock from './BackgroundBlock.vue'
-import Timeline from './canvas.vue'
+import Timeline from './Canvas.vue'
 import Sitemap from './Sitemap.vue'
 
 Vue.use(vueCustomElement)
