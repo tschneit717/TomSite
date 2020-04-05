@@ -34,7 +34,6 @@
     "eslint-plugin-vue": "^5.0.0",
     "html-loader": "^0.5.5",
     "lint-staged": "^9.4.2",
-    "miragejs": "^0.1.33",
     "netlify-lambda": "^0.2.1",
     "node-sass": "^4.13.0",
     "sass": "^1.19.0",
