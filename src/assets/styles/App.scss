@@ -1,0 +1,18 @@
+.App {
+  background:slategray;
+  height:100%;
+  width: 100%;
+  position: fixed;
+}
+
+.body-wrapper {
+  width:85%;
+  height:100%;
+  margin:0 auto;
+  max-width: 1200px;
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
