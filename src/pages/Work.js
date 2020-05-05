@@ -3,9 +3,14 @@ import React, { Component } from 'react'
 class WorkPage extends Component {
   render() {
     return(
-      <h2>
-        This is the Work page
-      </h2>
+      <div>
+        <h2>
+          This is the Work page
+        </h2>
+        <ul>
+          
+        </ul>
+      </div>
     )
   }
 }

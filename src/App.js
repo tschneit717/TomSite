@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './assets/styles/App.scss';
 import './assets/styles/_Navigation.scss';
-import HeaderComponent from './Header'
-import BodyArea from './BodyArea'
+import HeaderComponent from './components/Header'
+import BodyArea from './components/BodyArea'
 import { HashRouter } from 'react-router-dom';
 
 const pages = [

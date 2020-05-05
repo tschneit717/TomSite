@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import HomePage from './pages/Homepage'
-import InterestsPage from './pages/Interests'
-import WorkPage from './pages/Work'
-import ContactPage from './pages/Contact'
+import HomePage from '../pages/Homepage'
+import InterestsPage from '../pages/Interests'
+import WorkPage from '../pages/Work'
+import ContactPage from '../pages/Contact'
 import { Route } from 'react-router-dom'
 
 class BodyArea extends Component {
