@@ -4,7 +4,7 @@ class HomePage extends Component {
   render() {
     console.log(this)
     return(
-      <div className="">
+      <div className="body-wrapper">
         <h2>
           Hello, welcome to my site!
         </h2>

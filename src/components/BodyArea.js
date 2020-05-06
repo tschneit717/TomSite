@@ -9,16 +9,15 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group'
 class BodyArea extends Component {
   render() {
     return(
-      <div className='body-wrapper'>
+      <div className='body'>
         <Route render={({location}) => {
-          const {pathname, key} = location
           return(
             <TransitionGroup>
               <CSSTransition 
                 key={location.key}
-                timeout={{ enter: 300, exit: 300}}
+                timeout={{ enter: 600, exit: 600}}
                 classNames={'fade'}
-              >
+                >
                 <Switch location={location}>
                   <Route exact path="/" component={HomePage}/>
                   <Route path="/interests" component={InterestsPage}/>
