@@ -3,15 +3,23 @@ import HomePage from '../pages/Homepage'
 import InterestsPage from '../pages/Interests'
 import WorkPage from '../pages/Work'
 import ContactPage from '../pages/Contact'
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 class BodyArea extends Component {
-  checkPage = currentPage => {
-    
-  }
+  state = {
+    display: false,
+  };
+
+  toggle = () => {
+    this.setState(prevstate => ({
+      display: !prevstate.display,
+    }));
+  };
   render() {
     return(
       <div className='body-wrapper'>
+        <button onClick={()=>{this.toggle()}}></button>
         <Route exact path="/" component={HomePage}/>
         <Route path="/interests" component={InterestsPage}/>
         <Route path="/contact" component={ContactPage}/>
