@@ -3,7 +3,7 @@ import './assets/styles/App.scss';
 import './assets/styles/_Navigation.scss';
 import HeaderComponent from './components/Header'
 import BodyArea from './components/BodyArea'
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 const pages = [
   {
@@ -35,15 +35,14 @@ class App extends Component {
     this.setState(() => ({
       page: selection.name
     }))
-    console.log(selection)
   }
   render() {
     return (
       <div className="App">
-        <HashRouter>
+        <BrowserRouter>
           <HeaderComponent onHandleLinkSelect={this.handleLinkSelect} pages={pages}></HeaderComponent>
           <BodyArea currentPage={this.state.page}></BodyArea>
-        </HashRouter>
+        </BrowserRouter>
       </div>
     );
   }

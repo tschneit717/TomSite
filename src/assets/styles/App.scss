@@ -16,20 +16,38 @@
   flex-direction: column;
   text-align: center;
 }
-
-
-.display-enter, .display-appear {
-  top: var(--menu-starting-top);
-  width: var(--toggler-width);
-  max-height: var(--toggler-height);
-  color: var(--fade-from-color);
-  background-color: var(--toggler-bg-color);
+.fade {
+  &-enter {
+    opacity: 0.01;
+    &-enter-active {
+      opacity: 1;
+      transition: opacity 300ms ease-in;
+    }
+  }
+  &-exit {
+    opacity: 1;
+    &-exit-active {
+      opacity: 0.01;
+      transition: opacity 300ms ease-in;
+    }
+  }
 }
-.display-enter-active, .display-appear-active {
-  top: var(--menu-ending-top);
-  width: var(--menu-width);
-  max-height: var(--menu-max-height);
-  color: var(--fade-to-color);
-  background-color: var(--menu-bg-color);
-  transition: all var(--timeout);
+
+
+.fade-enter {
+  opacity: 0.01;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit.fade-exit-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
 }

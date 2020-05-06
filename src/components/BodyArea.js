@@ -3,30 +3,35 @@ import HomePage from '../pages/Homepage'
 import InterestsPage from '../pages/Interests'
 import WorkPage from '../pages/Work'
 import ContactPage from '../pages/Contact'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, withRouter } from 'react-router-dom'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 class BodyArea extends Component {
-  state = {
-    display: false,
-  };
-
-  toggle = () => {
-    this.setState(prevstate => ({
-      display: !prevstate.display,
-    }));
-  };
   render() {
     return(
       <div className='body-wrapper'>
-        <button onClick={()=>{this.toggle()}}></button>
-        <Route exact path="/" component={HomePage}/>
-        <Route path="/interests" component={InterestsPage}/>
-        <Route path="/contact" component={ContactPage}/>
-        <Route path="/work" component={WorkPage} />
+        <Route render={({location}) => {
+          const {pathname, key} = location
+          return(
+            <TransitionGroup>
+              <CSSTransition 
+                key={location.key}
+                timeout={{ enter: 300, exit: 300}}
+                classNames={'fade'}
+              >
+                <Switch location={location}>
+                  <Route exact path="/" component={HomePage}/>
+                  <Route path="/interests" component={InterestsPage}/>
+                  <Route path="/contact" component={ContactPage}/>
+                  <Route path="/work" component={WorkPage} />
+                </Switch>
+              </CSSTransition>
+            </TransitionGroup>
+          )
+        }}/>
       </div>
     )
   }
 }
 
-export default BodyArea
+export default withRouter(BodyArea);
