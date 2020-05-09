@@ -1,57 +1,67 @@
 [
   {
-    "date": "July 7, 1994",
-    "year": "1994",
-    "name": "Tom's Initial Commit"
-  },
-  {
-    "date": "Summer of 2006",
-    "year": "2006",
-    "name": "Tom discovered modding in 'Halo'"
-  },
-  {
-    "date": "Summer of 2010",
-    "year": "2010",
-    "name": "Tom started modding 'Company of Heroes'"
-  },
-  {
-    "date": "August 2012",
-    "year": "2012",
-    "name": "Tom goes to Bowling Green State University for Fine Arts"
-  },
-  {
-    "date": "August 2013",
-    "year": "2013",
-    "name": "Tom changes majors to 'Visual Communication Technology"
-  },
-  {
+    "id": "1",
     "date": "September 2015",
     "year": "2015",
-    "name": "Internship at Bowling Green State University as a web developer"
+    "title": "Student Web Developer",
+    "company": "Bowling Green State University"
   },
   {
+    "id": "2",
     "date": "May 2017",
     "year": "2017",
-    "name": "Graduated from Bowling Green State University"
+    "title": "Graduated with Bachelor of Science in Technology",
+    "company": "Bowling Green State University",
+    "projects": {
+      "College of Business Administration": {
+      },
+      "College of Education and Human Services": {
+      }
+    }
   },
   {
+    "id": "3",
     "date": "July 2017",
     "year": "2017",
-    "name": "Started work at Abercrombie & Fitch"
+    "title": "Web Content Analyst",
+    "company": "Abercrombie & Fitch",
+    "projects": {
+      "Hollister Co.": {
+
+      }
+    }
   },
   {
+    "id": "4",
     "date": "September 2019",
     "year": "2019",
-    "name": "Started work at WillowTree"
+    "title": "Platform Software Engineer",
+    "company": "Started work at WillowTree",
+    "projects": {
+      "American Water": {
+        
+      },
+      "Econocheck": {
+
+      }
+    }
   },
   {
-    "date": "March 2020 - Current Day",
-    "year": "2020",
-    "name": "Survived the apocalypse"
-  },
-  {
+    "id": "5",
     "date": "Today",
     "year": "Today",
-    "name": "Doing some cool shit"
+    "title": "Doing some cool shit",
+    "company": "Freelance",
+    "projects": {
+      "Fox Valley Tax Solutions": {
+
+      },
+      "Free Range Skincare": {
+
+      },
+      "Visit Findlay": {
+        
+      }
+    }
   }
 ]

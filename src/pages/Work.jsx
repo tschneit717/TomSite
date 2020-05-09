@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import resume from './../assets/data/resume.json'
+import resume from '../assets/data/resume.json'
 import styles from './../assets/styles/_Timeline.module.scss'
 class WorkPage extends Component {
   render() {
@@ -12,7 +12,7 @@ class WorkPage extends Component {
         <ul className={styles.timeline}>
           {Object.values(resume).map((item) => {
             return(
-              <li key={item.date}>{item.name}</li>
+              <li key={item.date}>{item.title}</li>
             )                
           })}
         </ul>
