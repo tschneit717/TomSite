@@ -2,8 +2,10 @@ import React, { Component } from 'react'
 import resume from '../assets/data/resume.json'
 import styles from './../assets/styles/_Timeline.module.scss'
 class WorkPage extends Component {
+  handleWorkItem = event => {
+    console.log(event)
+  }
   render() {
-    console.log(resume[0].name)
     return(
       <div className='body-wrapper'>
         <h2>
@@ -12,7 +14,7 @@ class WorkPage extends Component {
         <ul className={styles.timeline}>
           {Object.values(resume).map((item) => {
             return(
-              <li key={item.date}>{item.title}</li>
+              <li onClick={() => this.handleWorkItem(item)} key={item.date}>{item.title}</li>
             )                
           })}
         </ul>

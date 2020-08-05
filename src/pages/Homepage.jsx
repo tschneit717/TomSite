@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 
 class HomePage extends Component {
   render() {
-    console.log(this)
     return(
       <div className="body-wrapper">
         <h2>

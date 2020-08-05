@@ -14,7 +14,6 @@ class ContactsPage extends Component {
     this.setState(() => ({
       name: name
     }))
-    console.log(this)
   }
   render() {
     return(

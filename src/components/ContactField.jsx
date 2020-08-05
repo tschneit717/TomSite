@@ -42,6 +42,9 @@ class NameField extends React.Component {
       this.setState({location: 'message'});
     }
   }
+  submit(event) {
+    console.log(this, event)
+  }
   render() {
     console.log(this.state)
     if(this.state.location === 'name') {
@@ -50,10 +53,10 @@ class NameField extends React.Component {
     return(
       <div>
         <p>Enter your {this.state.location}</p>
-        <button className="back-button" type="button" onClick={(event) => this.backPhase(event)}><i class="fas fa-chevron-left"></i></button>
+        <button className="back-button" type="button" onClick={(event) => this.backPhase(event)}><i className="fas fa-chevron-left"></i></button>
         <input value={this.state.name} onChange={this.handleChange} name='namefield'></input>
-        <button className="next-button" type="button" onClick={(event) => this.nextPhase(event)}><i class="fas fa-chevron-right"></i></button>
-        <button className="submit-button" type="button" onClick={(event) => this.submit()}></button>
+        <button className="next-button" type="button" onClick={(event) => this.nextPhase(event)}><i className="fas fa-chevron-right"></i></button>
+        <button className="submit-button" type="button" onClick={(event) => this.submit(event)}></button>
       </div>
     )
   }

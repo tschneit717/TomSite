@@ -6,7 +6,10 @@ const HeaderLink = props => {
   }
   let pageName = (props.page.name === 'Home') ? "" : props.page.name
   return (
-    <li><i className={"fas " + props.page.icon}></i><NavLink to={"/" + pageName.toLowerCase()} onClick={() => handleLinkSelect(props) }className='menu-title'>{props.page.name}</NavLink></li>
+    <li>
+      <i className={"fas " + props.page.icon}></i>
+      <NavLink to={"/" + pageName.toLowerCase()} onClick={() => handleLinkSelect(props) }className='menu-title'>{props.page.name}</NavLink>
+    </li>
   )
 }
 
